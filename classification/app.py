@@ -24,8 +24,7 @@ with open('models/vectorizer.pkl', 'rb') as file:
 if st.sidebar.button("Predict"):
     if email_content:
         # Preprocess the input
-        input_data = np.array([email_content])
-        # Make prediction
+        input_data = vectorizer.transform([email_content])
         prediction = model.predict(input_data)
         # Display the result
         if prediction[0] == 1:
